@@ -12,6 +12,7 @@
 
 # ignore a single file
 pch.cpp
+pch.h
 
 # Build results
 [Dd]ebug/
