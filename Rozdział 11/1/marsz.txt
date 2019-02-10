@@ -1,0 +1,6 @@
+Dystans do przejscia: 4, dlugosc kroku: 6
+0: (x,y)= (-3, 5.19615)
+Po 1 krokach delikwentosiagnal polozenie
+(x,y)= (-3, 5.19615)
+Czyli(m,a)=(6, 144)
+Srednia dlugosc kroku pozornego= 6
