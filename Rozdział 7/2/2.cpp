@@ -1,8 +1,7 @@
 ﻿#include "pch.h"
 #include <iostream>
-using namespace std;
 
-const int Limit = 10;
+const int Limit = 5;
 
 void fill_ar (double ar[], int n);
 void show_ar (double ar[], int n);
@@ -20,25 +19,26 @@ int main () {
 }
 
 void fill_ar (double ar[], int n) {
-	cout << " wprowadz dane, q konczy : " << endl;
-	double number;
-	for ( int i = 0; i < Limit; i++ ) {
-		if ( cin != "q" ) //TODO
 
-			cin >> ar [i];
+	std::cout << " Wprowadz " << Limit << " wynikow golfowych: \n";
+
+	for ( int i = 0; i < Limit; i++ ) {
+			std::cin >> ar [i];
 	}
 }
 void show_ar (double ar[], int n) {
+
+	std::cout << "Wprowadzone wyniki: \n";
 	for ( int i = 0; i < Limit; i++ ) {
-		cout << ar [i] << " , ";
+		std::cout <<  ar [i] << " ,";
 	}
 }
 void average (double ar[]) {
-	double av;
+	double av = 0;
 	int a = 0;
 	for ( int i = 0; i < Limit; i++ ) {
 		av = av + ar [i];
 		a++;
 	}
-	cout << "srenia: " << av / a;
+	std::cout << "Srenia: " << av / a;
 }
