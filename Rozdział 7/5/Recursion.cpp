@@ -6,10 +6,17 @@ int recursion (int n);
 
 int main () {
 	int number;
+
+	std::cout << "Podaj liczbe: \n";
 	cin >> number;
 
-	int wynik = recursion (number);
-	cout << wynik;
+	for ( int i = number; i < 0; i++ ) {
+
+		int wynik = recursion (number);
+		cout <<"Wynik: " << wynik;
+	}
+
+	return 0;
 }
 
 int recursion (int n) {

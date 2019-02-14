@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include <iostream>
-using namespace std;
 
 struct pudlo {
 	const char producent [40];
@@ -16,7 +15,7 @@ void volume (pudlo & p);
 int main () {
 	pudlo mini =
 	{
-		"marka",
+		"SuperPudlo200",
 		12,
 		5,
 		1,
@@ -24,17 +23,25 @@ int main () {
 	};
 	show (mini);
 	volume (mini);
+
+	return 0;
 }
 
 void show (pudlo p) {
-	cout << "dane: " << endl;
-	cout << p.producent << ", " << p.wysokosc << ", " << p.szerokosc;
-	cout << ", " << p.dlugosc << ", " << p.objetosc << endl;
+	std::cout << "Dane: \n";
+	std::cout << "Nazwa: " << p.producent << "\n";
+	std::cout << "Wysokosc: " << p.wysokosc << "\n";
+	std::cout << "Szerokosc: " << p.szerokosc << "\n";
+	std::cout << "Dlugosc: " << p.dlugosc << "\n";
+
+	return;
 }
 
 void volume (pudlo & p) {
 	double v;
 	v = (p.dlugosc * p.szerokosc * p.wysokosc);
 	p.objetosc = v;
-	cout << "volume: " << p.objetosc;
+	std::cout << "Objetosc: " << p.objetosc << "\n";
+
+	return;
 }
