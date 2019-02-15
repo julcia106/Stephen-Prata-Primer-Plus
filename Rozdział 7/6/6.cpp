@@ -1,43 +1,47 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <cstring>
-using namespace std;
 
 void fill_array (double ar[], int n);
 void show_array (double ar[], int n);
-double reverse_array (double ar[], int n);
+void reverse_array (double ar[], int n);
 
 int main () {
-	int size;
-	cout << "wielkosc: " << endl;
-	cin >> size;
 
-	double tab [size]; //TODO
-	cout << "wartosci: " << endl;
+	const int size = 5;
 
+	double tab [size]; 
+	std::cout << "Podaj " << size << " wartosci: \n";
 	fill_array (tab, size);
 	show_array (tab, size);
 	reverse_array (tab, size);
 
-
-
+	return 0;	
 }
+
 void fill_array (double ar[], int n) {
+
 	for ( int i = 0; i < n; i++ ) {
-		cin >> ar [i];
+		std::cin >> ar [i];
 	}
+	return;
 }
 
 void show_array (double ar[], int n) {
+
+	std::cout << "Wartosci tablicy: ";
 	for ( int i = 0; i < n; i++ )
-		cout << ar [i] << endl;
+		std::cout << ar [i];
+	std::cout << std::endl;
+	return;
 }
-double reverse_array (double ar[], int n) {
-	cout << "odwrocone: ";
+
+void reverse_array (double ar[], int n) {
+	std::cout << "Wartosci odwrocone: ";
 
 	for ( int i = (n - 1); i >= 0; i-- ) {
-		cout << ar [i];
+		std::cout << ar [i];
 	}
-
+	return;
 
 }
