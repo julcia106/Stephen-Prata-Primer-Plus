@@ -1,10 +1,11 @@
-﻿#include <iostream>
+﻿#include "pch.h"
+#include <iostream>
 #include <array>
 #include <string>
 
 const int Seasons = 4;
 const std::array<std::string, Seasons> Snames =
-{ "Wiosna", "Lato", "Jesień", "Zima" };
+{ "Wiosna", "Lato", "Jesien", "Zima" };
 
 void fill (std::array<double, Seasons> *pa);
 void show (std::array<double, Seasons> da);
@@ -16,19 +17,19 @@ int main () {
 	return 0;
 }
 void fill (std::array<double, Seasons> * pa) {
-	using namespace std;
+
 	for ( int i = 0; i < Seasons; i++ ) {
-		cout << "Podaj wydatki za okres>> " << Snames [i] << " <<: ";
-		cin >> (*pa) [i];
+		std::cout << "Podaj wydatki za okres>> " << Snames [i] << " <<: ";
+		std::cin >> (*pa) [i];
 	}
 }
 void show (std::array<double, Seasons> da) {
-	using namespace std;
+
 	double total = 0.0;
-	cout << "\nWYDATKI\n";
+	std::cout << "\nWYDATKI\n";
 	for ( int i = 0; i < Seasons; i++ ) {
-		cout << Snames [i] << ": " << da [i] << "zl" << endl;
+		std::cout << Snames [i] << ": " << da [i] << "zl\n";
 		total += da [i];
 	}
-	cout << "Laczne wydatki roczne: " << total << "zl" << endl;
+	std::cout << "Laczne wydatki roczne: " << total << "zl\n";
 }

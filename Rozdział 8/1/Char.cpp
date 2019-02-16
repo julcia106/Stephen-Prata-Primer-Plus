@@ -1,27 +1,33 @@
 ﻿#include "pch.h"
 #include <iostream>
 using namespace std;
-const int SLEN = 20;
+const int SLEN = 20; //TODO
 
 void show_char (char tab[], int);
 
 int main () {
 	char test[] = "test";
-
-	int n;
-	cout << "podaj liczbe: " << endl;
-	cin >> n;
-
-	show_char (test, n);
+	show_char (test, 1);
+	show_char (test, 1);
+	show_char (test, 1);
+	show_char (test, 1);
 
 }
 
 void show_char (char tab[], int n) {
-	if ( n > 0 ) {
-		for ( int i = 0; i <= n; i++ ) {
-			cout << "wyswietlam wyraz po raz:  " << i + 1 << endl;
+	
+	int temp = 1;
+	if ( n == 1 ) {
+
+		for ( int i = 0; i < temp; i++ ) {
 			cout << tab << endl;
+			cout << "temp= " << temp << endl;
 		}
+		temp++;
 	}
+	else if ( n == 0 )
+		temp--;
+
+	return;
 
 }

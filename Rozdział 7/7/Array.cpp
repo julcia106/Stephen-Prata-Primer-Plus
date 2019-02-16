@@ -7,13 +7,10 @@ void show_array (int * begin, int * end);
 void revalue (int * begin, int * end, int r);
 
 int main () {
-	using namespace std;
+	using namespace std;//TODO
 	int properties [Max];
 	int* end_of_array;
 	end_of_array = fill_array (properties, properties + Max);
-
-	int* pt;
-	//TODO pt= &stg;
 
 	show_array (properties, properties + Max);
 	if ( end_of_array > 0 ) {
@@ -35,13 +32,14 @@ int main () {
 	return 0;
 }
 int* fill_array (int * begin, int * end) {
+
 	using namespace std;
-	int temp;
-	int* pt;
+	double temp;
 	int i = 0;
-	for ( pt = begin; pt != end; pt++ ) {
-		cout << "Podaj wartosc nr" << i + 1 << ": "; // wtf
-		cin >> *pt;
+	for ( i = *begin; i != *end; i++ ) {
+		cout << "Podaj wartosc nr" << i + 1 << ": ";
+		cin >> temp;
+
 		if ( !cin ) {
 			cin.clear ();
 			while ( cin.get () != '\n' )
@@ -51,16 +49,16 @@ int* fill_array (int * begin, int * end) {
 		}
 		else if ( temp < 0 )
 			break;
-		//*pt=temp;
 		i++;
 	}
-	return pt;
+	return end + 1;
 }
 void show_array (int * begin, int * end) {
+
 	using namespace std;
 	int *pt;
 	int i = 0;
-	for ( pt = begin; pt != end; pt++ ) {
+	for ( i = *begin; i != *end; i++ ) {
 		cout << " Nieruchomosc nr " << (i + 1) << ": ";
 		cout << *pt << endl;
 		i++;

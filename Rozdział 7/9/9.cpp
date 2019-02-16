@@ -1,5 +1,5 @@
-﻿#include <iostream>
-using namespace std;
+﻿#include "pch.h"
+#include <iostream>
 
 const int SLEN = 30;
 struct student {
@@ -14,10 +14,10 @@ void display2 (const student * ps);
 void display3 (const student pa[], int n);
 
 int main () {
-	cout << "Podaj wielkosc grupy: ";
+	std::cout << "Podaj wielkosc grupy: ";
 	int class_size;
-	cin >> class_size;
-	while ( cin.get () != '\n' )
+	std::cin >> class_size;
+	while ( std::cin.get () != '\n' )
 		continue;
 	student* ptr_stu = new student [class_size];
 	int entered = getinfo (ptr_stu, class_size);
@@ -27,47 +27,49 @@ int main () {
 	}
 	display3 (ptr_stu, entered);
 	delete[]ptr_stu;
-	cout << "Gotowe\n";
+	std::cout << "Gotowe\n";
 	return 0;
 }
 
 int getinfo (student pa[], int n) {
-	cout << "Wpisac dane studentow: " << endl;
-	for ( int i = 0; i < n; i++ ) {
-		cout << "imie: ";
-		cin >> pa [i].fullname;
+	std::cout << "Wpisz dane studentow: \n";
+	int i = 0;
 
-		if ( !(cin >> pa [i].fullname) ) {
-			break;
-		}
-		else {
-			cout << "hobby: ";
-			cin >> pa [i].hobby;
-			cout << endl;
-			cout << "poziom/ liczba: ";
-			cin >> pa [i].ooplevel;
-			cout << endl;
-		}
+	for ( int i = 0; i < n; i++ ) {
+		std::cout << "Imie: ";
+		std::cin >> pa [i].fullname;
+		std::cout << "Hobby: ";
+		std::cin >> pa [i].hobby;
+		std::cout << "Liczba: ";
+		std::cin >> pa [i].ooplevel;
 	}
+	return n;
 }
 void display1 (student st) {
-	cout << "display1: " << endl;
-	cout << "imie: " << st.fullname << endl;
-	cout << "hobby: " << st.hobby << endl;
-	cout << "poziom: " << st.ooplevel << endl;
+
+	std::cout << "Pobrana struktura: \n";
+	std::cout << "Imie: " << st.fullname;
+	std::cout << " Hobby: " << st.hobby;
+	std::cout << " Poziom: " << st.ooplevel;
+	std::cout << std::endl;
 
 }
 void display2 (const student * ps) {
-	cout << "display2: " << endl;
-	cout << "imie: " << ps->fullname << endl;
-	cout << "hobby: " << ps->hobby << endl;
-	cout << "poziom: " << ps->ooplevel << endl;
+
+	std::cout << "Pobiera adres struktury: \n";
+	std::cout << "Imie: " << ps->fullname;
+	std::cout << " Hobby: " << ps->hobby;
+	std::cout << " Poziom: " << ps->ooplevel;
+	std::cout << std::endl;
 }
 void display3 (const student pa[], int n) {
+
+	std::cout << "Pobiera adres pierwszego elementu tablicy ze strukturami student: \n";
+
 	for ( int i = 0; i < n; i++ ) {
-		cout << "display3:  " << endl;
-		cout << "imie: " << pa->fullname << endl;
-		cout << "hobby: " << pa->hobby << endl;
-		cout << "poziom: " << pa->ooplevel << endl;
+		std::cout << "Imie: " << pa [i].fullname;
+		std::cout << " Hobby: " << pa [i].hobby;
+		std::cout << " Poziom: " << pa [i].ooplevel;
+		std::cout << std::endl;
 	}
 }

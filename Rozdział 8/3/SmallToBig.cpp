@@ -3,27 +3,25 @@
 #include <string>
 #include <cctype>
 
-using namespace std;
-
-void small_to_big (string& a);
+void small_to_big (std::string& a);
 
 int main () {
-	string small;
-	cout << "Podaj lancuch (q aby skonczyc): " << endl;
+	std::string small;
+	std::cout << "Podaj lancuch (q aby skonczyc): \n";
 
 	while ( small != "Q" ) {
-		getline (cin, small);
+		std::getline (std::cin, small);
 		small_to_big (small);
-		cout << small;
-		cout << endl;
-		cout << "Podaj lancuch (q aby skonczyc): " << endl;
+		std::cout << small;
+		std::cout << std::endl;
+		std::cout << "Podaj lancuch (q aby skonczyc): \n";
 
 	}
 
 }
 
-void small_to_big (string& a) {
-	for ( int i = 0; i < a.length (); i++ )// moze mi to Jonasz wytlumaczyc?
+void small_to_big (std::string& a) {
+	for ( int i = 0; i < a.length (); i++ )
 	{
 		a [i] = toupper (a [i]);
 	}

@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#include "pch.h"
+#include <iostream>
 #include <string>
 
 const int Seasons = 4;
@@ -18,20 +19,20 @@ int main () {
 	return 0;
 }
 void fill_array (struct expenses* exp) {
-	using namespace std;
+
 	for ( int i = 0; i < Seasons; i++ ) {
-		cout << "Podaj wydatki za okres>> " << Snames [i] << " <<: ";
-		cin >> (exp->tab) [i];
+		std::cout << "Podaj wydatki za okres>> " << Snames [i] << " <<: ";
+		std::cin >> (exp->tab) [i];
 
 	}
 }
 void show_array (expenses* exp) {
-	using namespace std;
+
 	double total = 0.0;
-	cout << "\nWYDATKI\n";
+	std::cout << "\nWYDATKI\n";
 	for ( int i = 0; i < Seasons; i++ ) {
-		cout << Snames [i] << ": " << (exp->tab) [i] << "zl" << endl;
+		std::cout << Snames [i] << ": " << (exp->tab) [i] << "zl\n";
 		total += (exp->tab) [i];
 	}
-	cout << "Laczne wydatki roczne: " << total << "zl" << endl;
+	std::cout << "Laczne wydatki roczne: " << total << "zl\n";
 }

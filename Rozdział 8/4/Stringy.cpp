@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include <iostream>
+#include <string>
 
 using namespace std; //TODO
 #include <cstring>
@@ -26,8 +27,12 @@ int main () {
 	show ("Gotowe!");
 	return 0;
 }
-void left (stringy& s, const char* str) {
-	cout << str;
+void set (stringy& s, const char* str) {
+
+	str = new char [strlen (s.str) + 1];
+	strcpy(s.str, str);
+	
+
 }
 void show (stringy s) {
 	cout << "pierwsza funkcja: ";
