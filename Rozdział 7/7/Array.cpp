@@ -2,41 +2,34 @@
 #include <iostream>
 const int Max = 5;
 
-int* fill_array (int * begin, int * end);
-void show_array (int * begin, int * end);
-void revalue (int * begin, int * end, int r);
+int* fill_array (int * ar, int limit);
+void show_array (const int * ar, int * end);
+void revalue (int * ar, int * end, int r);
 
 int main () {
-	using namespace std;//TODO
-	int properties [Max];
-	int* end_of_array;
-	end_of_array = fill_array (properties, properties + Max);
 
-	show_array (properties, properties + Max);
-	if ( end_of_array > 0 ) {
-		cout << " Podaj czynnik zmiany wartosci: ";
-		int factor;
-		while ( !(cin >> factor) ) {
-			cin.clear ();
-			while ( cin.get () != '\n' )
-				continue;
-			cout << "Niepoprawna wartosc; podaj liczbe: ";
-		}
-		revalue (properties, properties + Max, factor);
-		show_array (properties, end_of_array);
-	}
+	using namespace std;
+	int properties [Max];
+	int* end_of_array = fill_array (properties, Max);
+	show_array (properties, end_of_array);
+
+	cout << " Podaj czynnik zmiany wartosci: ";
+	int factor;
+	cin >> factor;
+	
+	revalue (properties, end_of_array, factor);
+	show_array (properties, end_of_array);
 	cout << "Gotowe.\n";
 
-	cin.get ();
-	cin.get ();
 	return 0;
 }
-int* fill_array (int * begin, int * end) {
+
+int* fill_array (int * ar, int limit) {
 
 	using namespace std;
 	double temp;
-	int i = 0;
-	for ( i = *begin; i != *end; i++ ) {
+	int i;
+	for (i = 0; i<limit; i++ ) {
 		cout << "Podaj wartosc nr" << i + 1 << ": ";
 		cin >> temp;
 
@@ -49,24 +42,24 @@ int* fill_array (int * begin, int * end) {
 		}
 		else if ( temp < 0 )
 			break;
-		i++;
+		*(ar + i) = temp;
 	}
-	return end + 1;
+	return (ar+i);
 }
-void show_array (int * begin, int * end) {
+void show_array (const int * ar, int * end) {
 
 	using namespace std;
-	int *pt;
-	int i = 0;
-	for ( i = *begin; i != *end; i++ ) {
+	const int *pt = ar;
+
+	for ( int i = 0; pt < end; i++, pt++ ) {
 		cout << " Nieruchomosc nr " << (i + 1) << ": ";
 		cout << *pt << endl;
-		i++;
 	}
 }
-void revalue (int * begin, int * end, int r) {
-	int* pt;
-	for ( pt = begin; pt != end; pt++ )
+void revalue (int * ar, int * end, int r) {
+
+	int* pt = ar;
+	for (int i = 0; pt< end; i++, pt++ )
 		*pt *= r;
 
 }

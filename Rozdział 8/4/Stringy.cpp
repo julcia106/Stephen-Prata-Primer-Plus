@@ -1,17 +1,17 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <string>
-
-using namespace std; //TODO
 #include <cstring>
+
+using namespace std; 
 
 struct stringy {
 	char* str;
 	int ct;
 };
-void set (stringy& s, const char* str);
-void show (stringy s);
-void show (stringy s, int n);
+void set (stringy& s,char str[]);
+void show (const stringy& s, int n=1);
+void show (const char str[], int n=1);
 
 int main () {
 	string beany;
@@ -19,27 +19,40 @@ int main () {
 
 	set (beany, testing);
 	show (beany);
-	show (beany, 2)
-		testing [0] = 'D';
+	show (beany, 2);
+	testing [0] = 'D';
 	testing [1] = 'u';
 	show (testing);
 	show (testing, 3);
 	show ("Gotowe!");
 	return 0;
 }
-void set (stringy& s, const char* str) {
 
-	str = new char [strlen (s.str) + 1];
-	strcpy(s.str, str);
-	
+void set (stringy& s, char str[]) {
 
+	int size = strlen (str);
+	char* temp = new char [size + 1];
+	strcpy(temp, str);
+
+	s.str = temp;
+	s.ct = size;
+
+	return;
 }
-void show (stringy s) {
-	cout << "pierwsza funkcja: ";
-	cout << s.str << endl;
+
+void show (const stringy& s, int n) {
+
+	cout << "Pierwsza funkcja\n";
+	for ( int i = 0; i < n; i++ ) {
+		cout << s.str << endl;
+	}
+	return;
 }
-void show (stringy s, int n) {
+
+void show (const char str[], int n) {
+
 	cout << "druga funkcja: ";
 	for ( int i = 0; i < n; i++ )
-		cout << s.str << endl;
+		cout << str << endl;
+	return;
 }
