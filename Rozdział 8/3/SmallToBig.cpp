@@ -26,3 +26,4 @@ void small_to_big (std::string& a) {
 		a [i] = toupper (a [i]);
 	}
 }
+
