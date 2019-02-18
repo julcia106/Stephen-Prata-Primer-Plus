@@ -27,6 +27,9 @@ void List::size ()const {
 	cout << " wielkosc: " << size_of_ar << endl;
 }
 void List::show () const {
+
+	cout << "Poczatek tablicy: ";
 	for ( int i = 0; i < size_of_ar; i++ )
-		cout << "tablica numer " << i + 1 << " : " << arr [i] << endl;
+		cout << arr [i] << "->";
+	cout << " : koniec tablicy.\n";
 }

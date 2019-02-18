@@ -10,7 +10,7 @@ private:
 	std::string account_number;
 	double saldo;
 public:
-	void person (const std::string& per, const std::string& num, double sal = 0.0); // const char* per jak to zrobic?
+	void person (const std::string& per, const std::string& num, double sal = 0.0); 
 	void show (void) const;
 	void take (double amount);
 	void give (double amount);

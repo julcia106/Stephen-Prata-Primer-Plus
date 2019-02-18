@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "Stack.h"
 
-Stack::Stack () //tworzy pusty stos
+Stack::Stack ()
 {
 	top = 0;
 }

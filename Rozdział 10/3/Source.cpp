@@ -7,10 +7,10 @@ int main () {
 	using std::endl;
 
 	Golf frania;
+	frania.Setgolf ();
 	frania.Showgolf ();
 
 	Golf ann ("Ania Wieczorek", 24);
-	ann.Setgolf ();
 	ann.Showgolf ();
 
 	Golf juzia;

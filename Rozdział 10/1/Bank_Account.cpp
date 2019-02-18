@@ -18,9 +18,9 @@ void Bank_Account::show (void) const {
 }
 void Bank_Account::take (double amount) {
 	saldo += amount;
-	std::cout << "Saldo after function take: +" << saldo << std::endl;
+	std::cout << "Saldo after function take: " << saldo << std::endl;
 }
 void Bank_Account::give (double amount) {
 	saldo += amount;
-	std::cout << "Saldo after function give: -" << saldo << std::endl;
+	std::cout << "Saldo after function give: " << saldo << std::endl;
 }
