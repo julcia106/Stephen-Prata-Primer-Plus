@@ -23,14 +23,4 @@ int main () {
 	temp = 5 * two;
 	cout << temp << endl;
 
-
-
-
-	/*((cout  << one) << two) << endl;
-	one.operator*(5); == one * 5
-		cout << 5 * one;
-	one * 5; = metoda
-	5 * one; = metoda zaprzyjazniona
-	operator*(vector a, int b)
-		operator*(int b, vector a)*/
 }
