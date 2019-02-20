@@ -21,6 +21,10 @@ Stonewt Stonewt::operator+(double n) const {
 	return temp;
 }
 
+Stonewt Stonewt::operator+(const Stonewt & a, const Stonewt & b) const {
+	return Stonewt ();
+}
+
 Stonewt Stonewt::operator-(double n) const {
 	Stonewt temp;
 	double total = pounds - n;
