@@ -12,25 +12,30 @@ Stonewt Stonewt::operator*(double n) const {
 	return temp;
 }
 
-Stonewt Stonewt::operator+(double n) const {
+Stonewt operator*(const Stonewt & a, const Stonewt & b) {
 	Stonewt temp;
-	double total = pounds + n;
+	double total = a.pounds * b.pounds;
 	temp.pounds = total;
 	temp.stone = int (total) / 14;
-	temp.pds_left = int (total) % Lbs_per_stn;
+	temp.pds_left = int (total) % Stonewt::Lbs_per_stn;
 	return temp;
 }
 
-Stonewt Stonewt::operator+(const Stonewt & a, const Stonewt & b) const {
-	return Stonewt ();
-}
-
-Stonewt Stonewt::operator-(double n) const {
+Stonewt operator+(const Stonewt & a, const Stonewt & b){
 	Stonewt temp;
-	double total = pounds - n;
+	double total = a.pounds + b.pounds;
 	temp.pounds = total;
 	temp.stone = int (total) / 14;
-	temp.pds_left = int (total) % Lbs_per_stn;;
+	temp.pds_left = int (total) % Stonewt::Lbs_per_stn;
+	return temp;
+}
+
+Stonewt operator-(const Stonewt & a, const Stonewt & b) {
+	Stonewt temp;
+	double total = a.pounds - b.pounds;
+	temp.pounds = total;
+	temp.stone = int (total) / 14;
+	temp.pds_left = int (total) % Stonewt::Lbs_per_stn;;
 	return temp;
 }
 
@@ -57,7 +62,8 @@ Stonewt::Stonewt (double Ibs, Mode form) {
 }
 
 Stonewt::Stonewt () { // konstruktor domyślny, zeruje obiekt
-	stone = pounds = pds_left = 0;
+	stone = 0;
+	pounds = pds_left = 0.0;
 }
 Stonewt::~Stonewt () {}
 

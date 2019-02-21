@@ -3,8 +3,6 @@
 #include <iostream>
 using namespace std;
 
-void display (const Stonewt& st, int n);
-
 int main () {
 	Stonewt incognito = 275; // inicjalizacja konstruktorem
 	Stonewt wolfe (285.7); // równowa¿ne instrukcji: Stonewt wolfe= 285.7;
@@ -18,9 +16,10 @@ int main () {
 	cout << "Po obiedzie celebryta wazy: " << incognito << endl;
 	cout << "Po obiedzie prezydent wazy: " << taft << endl;
 
-	cout << "Dodawanie: " << incognito + 200 << endl;
-	//cout << "Dodawanie incognito i taft (275+20) :" << incognito + taft << endl;
-	cout << "Odejmowanie: " << taft- 12 << endl;
-
-	cout << "Mnozenie: " << wolfe *2 << endl;
+	cout << "Dodawanie (Incognito + 200): " << incognito + 200 << endl;
+	cout << "Odejmowanie (prezydent -12): " << taft - 12 << endl;
+	cout << "Mnozenie (Detektyw * 2): " << wolfe * 2 << endl;
+	cout << "Dodawanie celebryty i prezydenta :" << incognito + taft << endl;
+	cout << "Mnozenie (Detektyw * Prezydent): " << wolfe * taft << endl;
+	cout << "Odejmowanie (Detektyw - celebryta): " << wolfe - incognito << endl;
 }

@@ -14,9 +14,9 @@ public:
 	Stonewt (double Ibs, Mode form = STONE);
 	Stonewt ();
 	~Stonewt ();
-	//Stonewt operator+(double n) const;
-	//Stonewt operator+(const Stonewt &a, const Stonewt &b) const;
-	Stonewt operator-(double n) const;
+	friend Stonewt operator+(const Stonewt &a, const Stonewt &b);
+	friend Stonewt operator-(const Stonewt & a, const Stonewt & b);
+	friend Stonewt operator*(const Stonewt & a, const Stonewt & b);
 	Stonewt operator*(double n) const;
 	friend ostream& operator<<(ostream& os, const Stonewt & st);
 };
