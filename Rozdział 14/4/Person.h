@@ -7,49 +7,65 @@
 
 class Person {
 public:
-	Person (): name ("brak"), surname ("brak") {}
-	Person (std::string n, std::string sn): name (n), surname (sn) {}
+	Person (): fullname ("brak") {}
+	Person (std::string fn): fullname (fn){}
 	virtual ~Person () = 0; 
-	virtual void Show () const; 
+	virtual void Set () = 0;
+	virtual void Show () const=0; 
+protected:
+	virtual void Data () const;
+	virtual void Get ();
 private: 
-	std::string name;
-	std::string surname;
+	std::string fullname;
 };
 
-class Gunslinger: public Person {
+class Gunslinger: virtual public Person {
 public:
-	Gunslinger (int GI = 0, std::string n = "brak", std::string sn = "brak")
-		:Person (n, sn) {}
+	Gunslinger (int GI = 0, double t = 0.0, std::string fn = "brak");
 	~Gunslinger () {};
-	double Draw (double time) const { return time; }; //TODO czas wyci¹gania rewolweru przez rewolwerowca
-	virtual void Show () const; // wyœwietla wszystkie informacje
+	double Draw () const { return time; };
+	virtual void Show () const;
+	virtual void Set ();
+protected:
+	virtual void Data () const;
+	virtual void Get ();
 private:
 	int GunIncision; //liczba naciêæ na rewolwerze 
+	double time; //czas wyciagania rewolweru przez rewolwerowca
 };
 
 class PokerPlayer: virtual public Person {
 public:
-	PokerPlayer ():Person () {};
+	PokerPlayer ():Person () {}; //TODO ???
+	PokerPlayer (std::string fn):Person (fn) {};
 	~PokerPlayer () {};
 	int Draw () const; //zwraca liczbê losow¹ miêdzy 1 a 52, reprezentuj¹c¹ kartê
-	virtual void Show () const; //funkcja klasy Person
+	virtual void Show () const; 
+	virtual void Set ();
+protected:
+	virtual void Data () const;
 };
 
 class Card {
 public:
 	Card (std::string col = "brak", int num = 0): colour (col), number (num) {}
-	~Card () {};
+	~Card () {}; 
 private:
 	std::string colour;
 	int number;
+	//TODO u¿yæ typu Card jako wartoœci zwracanej przez metodê Draw()
 };
 
-class BadDude:public Gunslinger, public PokerPlayer {
+class BadDude:public Gunslinger,public PokerPlayer {
 public:
-	BadDude (std::string n, std::string sn, int GI)
-		:Person (n, sn), Gunslinger(GI),PokerPlayer() {}
+	BadDude (const Person& fn, int GI=0)
+		:Person (fn), Gunslinger(GI),PokerPlayer() {}
 	~BadDude () {}; 
-	double Gdraw (double t); //zwraca czas wyci¹gania rewolweru
+	double Gdraw () const; //zwraca czas wyci¹gania rewolweru
 	int Cdraw () const; //zwraca kolejn¹ wyci¹gan¹ kartê
 	virtual void Show () const;
-};
+	virtual void Set ();
+protected:
+	virtual void Data () const;
+	virtual void Get ();
+}; 
