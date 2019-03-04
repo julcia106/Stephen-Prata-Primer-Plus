@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-int main () {
+int main (void) {
 	employee em ("Tadeusz", "Hubert", "Sprzedawca");
 	cout << em << endl;
 	em.ShowAll ();
@@ -15,7 +15,7 @@ int main () {
 	fink fi ("Maurycy", "Olkuski", "Hydraulik", "Julian Bar");
 	cout << fi << endl;
 	fi.ShowAll ();
-	highfink hf (ma, "Jan Kudlaty"); //rekrutacja?
+	highfink hf (ma, "Jan Kudlaty");
 	hf.ShowAll ();
 	cout << "Wcisnij dowolny przycisk, aby przejsc do nastepnego etapu:\n";
 	cin.get ();

@@ -2,15 +2,9 @@
 #include "Person.h"
 #include <iostream>
 
-Person::~Person () {}
-
-void Person::Get () {
+void Person::Set () {
 	std::cout << "Podaj imie i nazwisko: ";
 	std::getline (std::cin, fullname);
-}
-
-void Person::Data () const {
-	std::cout << "Imie i nazwisko: " << fullname << std::endl;
 }
 
 Gunslinger::Gunslinger (int GI,double t, std::string fn)
@@ -21,55 +15,31 @@ Gunslinger::Gunslinger (int GI,double t, std::string fn)
 }
 
 void Gunslinger::Set () {
-	std::cout << "Set z Person(): \n";
-	Person::Get ();	
-	Get ();
-}
-
-void Gunslinger::Data () const {
-	std::cout << "Liczba naciec na rewolwerze: " << GunIncision << std::endl;
-	std::cout << "Czas wyciagania rewolweru: " << Draw () << std::endl;
-}
-
-void Gunslinger::Get () {
-	std::cout << "Podaj liczbe naciec w rewolwerze: \n";
+	Person::Set ();	
+	std::cout << "Wprowadz liczbe naciec: \n";
 	std::cin >> GunIncision;
-	std::cout << "Podaj czas wyciagania rewolerwu: \n";
+	std::cout << "Wprowadz czas wyciagania rewolerwu: \n";
 	std::cin >> time;
 }
 
 void Gunslinger::Show () const { 
-	std::cout << "Show z Person(): \n";
-	Person::Data ();
-	Data ();
-
+	Person::Show ();
+	std::cout << "Liczba naciec na rewolerze: " << GunIncision << std::endl;
+	std::cout << "Czas wyciagania rewoleru: " << time << std::endl;
 }
 
-
 int PokerPlayer::Draw () const {
-
 	srand (time (NULL));
-	
-	int min = 1;
-	int max = 52;
-	int number = ((rand () % ((max - min) + 1)) + min);
-	
-	return number;
+	return rand () & 52 + 1;
 }
 
 void PokerPlayer::Set () {
-	std::cout << "Set z Person: \n";
 	Person::Set ();
 }
 
 void PokerPlayer::Show () const {
-	std::cout << "Show z Person(): \n";
-	Person::Data ();
-	Data ();
-}
-
-void PokerPlayer::Data () const {
-	std::cout << "Liczba losowa miedzy 1 a 52: " << Draw () << std::endl;
+	Person::Show ();
+	std::cout << "Numer karty: " << Draw () << std::endl;
 }
 
 double BadDude::Gdraw ()const {
@@ -83,27 +53,13 @@ int BadDude::Cdraw () const {
 }
 
 void BadDude::Set () {
-	Person::Get ();
-	Get ();
-}
-
-void BadDude::Data () const {
-	Gunslinger::Data ();
-	PokerPlayer::Data ();
-
-	std::cout << "Nowe dane: \n";
-	std::cout << "Numer kolejnej wyciagnietej karty: " << Cdraw () << std::endl;
-	std::cout << "Czas wyciagania rewolweru: " << Gdraw () << std::endl;
-}
-
-void BadDude::Get () {
-	Gunslinger::Get ();
-	PokerPlayer::Get ();
+	Gunslinger::Set ();
 }
 
 void BadDude::Show () const {
 
-	std::cout<<"Show z Person(): \n";
-	Person::Data ();
-	Data ();
+	Person::Show ();
+	std::cout << "Czas wyciagania rewolweru: " << Gdraw () << std::endl;
+	std::cout << "Numer karty: " << Cdraw () << std::endl;
+	
 }

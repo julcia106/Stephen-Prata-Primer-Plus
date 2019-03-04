@@ -18,7 +18,7 @@ void abstr_emp::ShowAll () const {
 void abstr_emp::SetAll () {
 	cout << "Podaj imie: \n";
 	getline (cin, fname);
-	cout << "Podaj nazwisko: \n";
+	cout << "Podaj nazwisko: \n";	
 	getline (cin, lname);
 	cout << "Podaj zawod: \n";
 	getline (cin, job);
@@ -42,6 +42,11 @@ manager::manager (const std::string & fn, const std::string & ln, const std::str
 	:abstr_emp(fn,ln,j)
 {
 	inchargeof = ico;
+}
+
+manager::manager (const manager & m)
+	: abstr_emp (m) {
+	inchargeof = m.inchargeof;
 }
 
 void manager::ShowAll () const {
@@ -73,16 +78,16 @@ void fink::SetAll () {
 	getline (cin, reportsto);
 }
 
-highfink::highfink (const std::string & fn, const std::string & ln, const std::string & j, const std::string & rpo, int ico)
-	:abstr_emp(fn,ln,j), fink(fn,ln,j,rpo), manager(fn,ln,j,ico) 
-{}
-
 void highfink::ShowAll () const {
-	manager::ShowAll ();
-	fink::ShowAll ();
+	abstr_emp::ShowAll ();
+	cout << "Liczba obiektow: " << InChargeOf () << endl;
+	cout << "Raporty przesylane sa do: " << ReportsTo () << endl;
 }
 
 void highfink::SetAll () {
-	manager::SetAll ();
-	fink::SetAll ();
+	abstr_emp::SetAll ();
+	cout << "Wpisz liczbe obiektow: \n";
+	cin >> InChargeOf ();
+	cout << "Podaj do kogo przesylane sa raporty: \n";
+	cin >> ReportsTo ();
 }
