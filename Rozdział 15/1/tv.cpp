@@ -6,7 +6,8 @@ bool Tv::volup () {
 	if ( volume < MaxVal ) {
 		volume++;
 		return true;
-	} else
+	}
+	else
 		return false;
 }
 
@@ -14,7 +15,8 @@ bool Tv::voldown () {
 	if ( volume > MinVal ) {
 		volume--;
 		return true;
-	} else
+	}
+	else
 		return false;
 }
 
@@ -42,13 +44,15 @@ void Tv::settings () const {
 			<< (mode == Antenna ? "Antena" : "Kabel") << std::endl;
 		std::cout << "Wejscie: "
 			<< (input == TV ? "TV" : "DVD") << std::endl;
-		std::cout << "Tryb pracy pilota: "
-			<< (remote_mode == basic ? "podstawowy" : "interaktywny") << std::endl;
 	}
 }
 
+void Remote::set_remote () {
+	remote_mode = (remote_mode == basic) ? interactive : basic;
+}
+
 void Remote::show () const {
-		std::cout << "Tryb pracy pilota: "
-			<< (remote_mode == basic ? "podstawowy" : "interaktywny") << std::endl;
-		return;
+	std::cout << "Tryb pracy pilota: "
+		<< (remote_mode == basic ? "podstawowy" : "interaktywny") << std::endl;
+	return;
 }

@@ -2,27 +2,29 @@
 #include "pch.h"
 #include <iostream>
 
+class Remote;
+
 class Tv {
 public:
-	friend class Remote; // klasa Remote ma dostêp do prywatnych danych Tv
+	friend class Remote;
+
 	enum { Off, On };
 	enum { MinVal, MaxVal = 20 };
 	enum { Antenna, Cable };
 	enum { TV, DVD };
-	enum { basic, interactive };
 
 	Tv (int s = Off, int mc = 125): state (s), volume (5),
 		maxchannel (mc), channel (2), mode (Cable), input (TV) {}
-	void onoff () { state = (state == On) ? Off : On; }
-	bool ison () const { return state == On; }
+	void onoff ();
+	bool ison () const;
 	bool volup ();
 	bool voldown ();
 	void chanup ();
 	void chandown ();
-	void set_mode () { mode = (mode == Antenna) ? Cable : Antenna; }
-	void set_input () { input = (input == TV) ? DVD : TV; }
+	void set_mode ();
+	void set_input ();
 	void settings () const; // wyœwietla wszystkie ustawienia
-	friend void set_remote (Remote& r) { r.remote_mode (); }
+	void change_remote (Remote& r); 
 
 private:
 	int state; //w³¹czony lub wy³¹czony
@@ -33,14 +35,14 @@ private:
 	int input; //telewizja lub DVD
 };
 
+
 class Remote {
 public:
 	friend class Tv;
 
-	enum {basic, interactive};
+	enum { basic, interactive };
 
-	Remote (int m = Tv::TV, int r= Tv::basic): mode (m), remote_mode(r) {}
-	void set_remote () { remote_mode = (remote_mode == basic) ? interactive : basic; } //
+	Remote (int m = Tv::TV, int r = basic): mode (m), remote_mode (r) {}
 	bool volup (Tv& t) { return t.volup (); }
 	bool voldown (Tv & t) { return t.voldown (); }
 	void onoff (Tv &t) { t.onoff (); }
@@ -49,8 +51,18 @@ public:
 	void set_chan (Tv& t, int c) { t.channel = c; }
 	void set_mode (Tv& t) { t.set_mode (); }
 	void set_input (Tv& t) { t.set_input (); }
-	void show () const; //
+	void set_remote ();
+	void show () const; 
 private:
-	int mode; //kontroluje TV lub DVD
-	int remote_mode; // sk³adowa, kt okreœla czy pilot dzia³a w trybie zwyk³ym czy interaktywnym
+	int mode;
+	int remote_mode; 
 };
+
+
+
+inline void Tv::change_remote (Remote& r) { r.set_remote (); }
+inline void Tv::set_mode () { mode = (mode == Antenna) ? Cable : Antenna; }
+inline void Tv::set_input () { input = (input == TV) ? DVD : TV; }
+inline void Tv::onoff () { state = (state == On) ? Off : On; }
+inline bool Tv::ison () const { return state == On; }
+
