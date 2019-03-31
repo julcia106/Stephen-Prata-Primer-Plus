@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool palindrom (string & str);
+bool is_palindrom (string & str);
 
 int main () {
 
@@ -14,14 +14,13 @@ int main () {
 	getline (cin, word);
 	cout << "Oto Twoje slowo: " << word << endl;
 
-	if ( palindrom (word) )
+	if ( is_palindrom (word) )
 		cout << "Twoje slowo jest palindromem. " << endl;
 	else
 		cout << "Twoje slowo nie jest palindromem. " << endl;
-
 }
  
-bool palindrom (string & str) {
+bool is_palindrom (string & str) {
 
 	string temp = str;
 
