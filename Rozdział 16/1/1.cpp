@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -12,9 +13,8 @@ int main () {
 
 	cout << "Prosze podac slowo: " << endl;
 	getline (cin, word);
-	cout << "Oto Twoje slowo: " << word << endl;
 
-	if ( is_palindrom (word) )
+	if(is_palindrom (word))
 		cout << "Twoje slowo jest palindromem. " << endl;
 	else
 		cout << "Twoje slowo nie jest palindromem. " << endl;
@@ -22,13 +22,16 @@ int main () {
  
 bool is_palindrom (string & str) {
 
-	string temp = str;
+	string palindrome;
 
-	reverse (str.begin (), str.end ());
+	for ( unsigned int i = 0; i < str.size (); i++ )
+		if ( isalpha (str [i]) )
+			palindrome.push_back (tolower (str [i]));
 
-	if ( temp.string::compare (str) == 0 )
-		return true;
-	else
-		return false;
+	for ( int i = 0, j = palindrome.size () - 1; i < j; i++, j-- )
+		if ( palindrome [i] != palindrome [j] )
+			return false;
+		else
+			return true;
 
 }
