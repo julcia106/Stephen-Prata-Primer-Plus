@@ -2,11 +2,10 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <cstdlib>
 #include <ctime>
 #include <algorithm>
 
-const int NUM = 1000000;
+const int NUM = 10000000;
 int getRandom () { return rand () % 100 + 1; }
 double sortVI (std::vector<int> &v);
 double sortLI (std::list<int> &l);
@@ -24,13 +23,12 @@ int main () {
 	std::list<int>li (vi.begin (), vi.end ());
 
 	double sortvi= sortVI(vi);
+	std::cout << "Czas sortowania wektora vi: " << sortvi << " sekund.\n";
 	double sortli = sortLI (li);
+	std::cout << "Czas sortowania listy li: " << sortli << " sekund.\n";
 
 	std::copy (vi0.begin (), vi0.end (), li.begin ()); //przywrócenie nieuporządkowanej sekwencji
 	double sortlii = sortLII (li,vi);
-
-	std::cout << "Czas sortowania wektora vi: " << sortvi << " sekund.\n";
-	std::cout << "Czas sortowania listy li: " << sortli << " sekund.\n";
 	std::cout << "Czas sortowania listy przez skopiowanie do wektora: " << sortlii << " sekund.\n";
 
 	return 0;
@@ -57,9 +55,9 @@ double sortLI (std::list<int> &l) {
 double sortLII (std::list<int> &li, std::vector<int> &vi) {
 
 	clock_t start = clock ();
-	std::copy (li.begin (), li.end (), vi.begin ()); // li do vi
+	std::copy (li.begin (), li.end (), vi.begin ()); // li to vi
 	std::sort (vi.begin (), vi.end ()); 
-	std::copy (vi.begin (), vi.end (), li.begin ()); //vi do li
+	std::copy (vi.begin (), vi.end (), li.begin ()); //vi to li
 	clock_t end = clock ();
 
 	return (double)(end - start) / CLOCKS_PER_SEC;
