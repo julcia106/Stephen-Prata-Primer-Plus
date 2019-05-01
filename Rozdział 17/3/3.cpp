@@ -13,7 +13,7 @@ int main () {
 	string FileName;
 	cin >> FileName;
 
-	fstream fin ("Text.txt", ios_base::in);
+	ifstream fin ("Text.txt", ios_base::in);
 	ofstream fout (FileName.c_str (), ios_base::out | ios_base::app);
 
 	string temp;
