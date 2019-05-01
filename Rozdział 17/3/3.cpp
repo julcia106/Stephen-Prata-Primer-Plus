@@ -32,5 +32,6 @@ int main () {
 
 	cout << "Gotowe.\n";
 	fin.close ();
+	fout.close ();
 	return 0;
 }
