@@ -1,0 +1,6 @@
+Imie: Jola
+Nazwisko: Swawola
+Zawod: kasjer
+Imie: Kasia
+Nazwisko: gluptasia
+Zawod: lolita
