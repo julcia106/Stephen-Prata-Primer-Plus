@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
+#include "Store.h"
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 #include <string>
 #include <vector>
 #include <iterator>
@@ -10,14 +10,7 @@
 using namespace std;
 
 void ShowStr (const string & str);
-void GetStrs (std::ifstream & fs, vector <string> str);
-
-class Store {
-public:
-	Store (std::ofstream & fo);
-	bool operator ()(const string & op);
-private:
-};
+void GetStrs (std::ifstream & fs, vector<string>& str);
 
 int main () {
 
@@ -29,7 +22,7 @@ int main () {
 	while ( getline (cin, temp) && temp [0] != '\0' )
 		vostr.push_back (temp);
 	cout << "Oto twoje dane wejsciowe.\n";
-	for_each (vostr.begin (), vostr.end (), ShowStr); //
+	for_each (vostr.begin (), vostr.end (), ShowStr);
 
 	//zapisz w pliku
 	ofstream fout ("lancuchy.dat", ios_base::out | ios_base::binary);
@@ -56,8 +49,23 @@ void ShowStr (const std::string & str) {
 	
 	cout << str << endl;
 }
+ 
+void GetStrs (std::ifstream & fs, vector<string>& str) { //odczytuje dane z pliku
 
-void GetStrs (std::ifstream & fs, vector <string> str) {
+	string temp;
+	char ch;
+	size_t len;
 
 
+	while ( fs.read ((char*)&len, sizeof (size_t))){
+
+		for ( int i = 0; i < len; ++i ) {
+			fs.read ((char*)&ch, sizeof (char));
+			temp.push_back (ch);
+		}
+
+		str.push_back (temp);
+		temp.clear ();
+
+	}
 }
