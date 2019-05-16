@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 
-class Store {
+class Store { //zapisuje dane lanczuchowe do pliku 
 public:
 	Store (std::ofstream & fout);
 	void operator ()(const std::string & s);

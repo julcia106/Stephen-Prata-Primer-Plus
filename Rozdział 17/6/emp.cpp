@@ -29,7 +29,7 @@ void abstr_emp::writeall (std::ofstream & fs) {
 
 	fs << "Imie: " << fname << endl;
 	fs << "Nazwisko: " << lname << endl;
-	fs << "Zawod: " <<  job << endl;
+	fs << "Zawod: " << job << endl;
 	cout << endl;
 }
 
@@ -73,7 +73,7 @@ void manager::SetAll () {
 }
 
 void manager::writeall (std::ofstream& fs) {
-	fs <<"Liczba obiektow: " << inchargeof << endl;
+	fs << "Liczba obiektow: " << inchargeof << endl;
 	abstr_emp::writeall (fs);
 }
 
@@ -96,7 +96,7 @@ void fink::SetAll () {
 }
 
 void fink::writeall (std::ofstream& fs) {
-	fs << "Raporty przesylane do: " <<  reportsto << endl;
+	fs << "Raporty przesylane do: " << reportsto << endl;
 	abstr_emp::writeall (fs);
 }
 
@@ -114,6 +114,6 @@ void highfink::SetAll () {
 	cin >> ReportsTo ();
 }
 
-void highfink::writeall (std::ofstream& fs) 	{
+void highfink::writeall (std::ofstream& fs) {
 	abstr_emp::writeall (fs);
 }

@@ -9,6 +9,6 @@ Store::Store (std::ofstream & fout) {
 void Store::operator ()(const std::string & s) {
 
 	size_t len = s.size ();
-	os->write ((char*)& len, sizeof (std::size_t));
-	os->write ((char*)s.data (), len);
+	os->write ((char*)& len, sizeof (std::size_t)); //zapisz dlugosc
+	os->write ((char*)s.data (), len); //zapisz znaki
 }

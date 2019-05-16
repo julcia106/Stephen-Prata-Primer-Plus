@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -11,16 +11,16 @@ public:
 		: fname (""), lname (""), job ("") {};
 	abstr_emp (const std::string & fn, const std::string & ln,
 			   const std::string & j);
-	virtual void ShowAll () const; //opisuje i wyúwietla wszystkie dane
-	virtual void SetAll (); //prosi uøytkownika o podanie wartoúci
+	virtual void ShowAll () const; //opisuje i wy≈ìwietla wszystkie dane
+	virtual void SetAll (); //prosi u¬øytkownika o podanie warto≈ìci
 	virtual void writeall (std::ofstream& fs);
 	friend std::ostream & operator<<(std::ostream&os, const abstr_emp& e);
-	// tylko wyúwietla imie i nazwisko
+	// tylko wy≈ìwietla imie i nazwisko
 	virtual ~abstr_emp () = 0 {}; //wirtualna klasa bazowa
 private:
-	std::string fname; //imiÍ obiektu abstr_emp
+	std::string fname; //imi√™ obiektu abstr_emp
 	std::string lname; //nazwisko obiektu abstr_emp
-	std::string job; //zawÛd obiektu abstr_emp
+	std::string job; //zaw√≥d obiektu abstr_emp
 };
 
 class employee: public abstr_emp {
@@ -47,10 +47,10 @@ public:
 	virtual void SetAll ();
 	virtual void writeall (std::ofstream& fs);
 protected:
-	int InChargeOf () const { return inchargeof; } //wyjúcie
-	int& InChargeOf () { return inchargeof; } //wejúcie
+	int InChargeOf () const { return inchargeof; } //wyj≈ìcie
+	int& InChargeOf () { return inchargeof; } //wej≈ìcie
 private:
-	int inchargeof; //liczba obiektÛw abstr_emps, ktÛrymi zarzπdza 
+	int inchargeof; //liczba obiekt√≥w abstr_emps, kt√≥rymi zarz¬πdza 
 };
 
 class fink: virtual public abstr_emp {
@@ -69,10 +69,10 @@ protected:
 	const std::string ReportsTo ()const { return reportsto; }
 	std::string&ReportsTo () { return reportsto; }
 private:
-	std::string reportsto; // do kogo fink(donosiciel) przesy≥a raport
+	std::string reportsto; // do kogo fink(donosiciel) przesy¬≥a raport
 };
 
-class highfink: public manager, public fink  // g≥Ûwny donosiciel
+class highfink: public manager, public fink  // g¬≥√≥wny donosiciel
 {
 public:
 	highfink ():abstr_emp (), manager (), fink () {}
