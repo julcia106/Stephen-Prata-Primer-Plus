@@ -8,19 +8,20 @@ void sum_values () {}
 
 //definicja dla jednego bądź wielu parametrów
 template <typename T, typename...Args>
-void sum_values (T value, Args...args) {
+long double sum_values (T value, Args...args) {
 
 	std::cout << value << std::endl;
 	sum += value;
 	sum_values (args...);
 
+	return sum;
 }
 
 int main () {
 
-	sum_values (34, 88.5, 2);
+	long double sum_val = sum_values (34, 88.5, 2);
 
-	std::cout << "suma: " << sum << std::endl;
+	std::cout << "Suma: " << sum_val << std::endl;
 
 	std::cout << "Gotowe.\n";
 	return 0;
