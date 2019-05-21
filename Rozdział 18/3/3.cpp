@@ -19,9 +19,7 @@ long double sum_values (T value, Args...args) {
 
 int main () {
 
-	long double sum_val = sum_values (34, 88.5, 2);
-
-	std::cout << "Suma: " << sum_val << std::endl;
+	std::cout << "Suma: " << sum_values (30, 40, 31.5) << std::endl;
 
 	std::cout << "Gotowe.\n";
 	return 0;
